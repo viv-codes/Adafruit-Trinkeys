@@ -84,6 +84,25 @@ void loop() {
 }
 
 uint32_t Wheel(byte WheelPos) {
+  if(WheelPos < 51) {
+   return strip.Color(WheelPos * 5, 255 - WheelPos * 5, 0);
+  } else if(WheelPos < 102) {
+   WheelPos -= 102;
+   return strip.Color(255 - WheelPos * 5, 0, WheelPos * 5);
+  } else if(WheelPos < 153) {
+   WheelPos -= 153;
+   return strip.Color(0, WheelPos * 5, 255 - WheelPos * 5);
+  } else if(WheelPos < 204) {
+   WheelPos -= 204;
+   return strip.Color(0, WheelPos * 5, 255 - WheelPos * 5);
+  } else {
+   WheelPos -= 255;
+   return strip.Color(0, WheelPos * 5, 255 - WheelPos * 5);
+  }
+}
+
+/*
+uint32_t Wheel(byte WheelPos) {
   if(WheelPos < 85) {
    return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
   } else if(WheelPos < 170) {
@@ -93,4 +112,4 @@ uint32_t Wheel(byte WheelPos) {
    WheelPos -= 170;
    return strip.Color(0, WheelPos * 3, 255 - WheelPos * 3);
   }
-}
+} */
